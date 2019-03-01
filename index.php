@@ -13,7 +13,8 @@ $ckfile = '/tmp/simpleproxy-cookie-'.session_id();
 $cookiedomain = str_replace("http://www.","",base64_decode($address));
 $cookiedomain = str_replace("https://www.","",$cookiedomain);
 $cookiedomain = str_replace("www.","",$cookiedomain);
-$url = base64_decode($address) . $_SERVER['REQUEST_URI'];
+$requrl = str_replace('/static','',$_SERVER['REQUEST_URI']);
+$url = base64_decode($address) . $requrl;
 if($_SERVER['HTTPS'] == 'on'){
 	$mydomain = 'https://'.$_SERVER['HTTP_HOST'];
 } else {
@@ -54,7 +55,7 @@ if (curl_error($curlSession)){
 		}
 	}
 	$body = str_replace(base64_decode($address),$mydomain,$body);
-	$body = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $body);
+	///$body = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $body);
 	print $body;
 }
 curl_close ($curlSession);
