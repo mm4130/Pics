@@ -8,7 +8,7 @@
 -
 - Download Link : http://ltiny.ir/subscene
 ------------------------------------------------------------------ */
-$address = 'aHR0cHM6Ly9zdWJzY2VuZS5jb20=';
+$address = base64_encode('https://static.pornpics.com');
 $ckfile = '/tmp/simpleproxy-cookie-'.session_id();
 $cookiedomain = str_replace("http://www.","",base64_decode($address));
 $cookiedomain = str_replace("https://www.","",$cookiedomain);
